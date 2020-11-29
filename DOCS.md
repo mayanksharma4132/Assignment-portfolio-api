@@ -10,6 +10,7 @@
 	- [Delete portfolio](#delete-portfolio)
 	- [Retrieve portfolio](#retrieve-portfolio)
 	- [Retrieve portfolios](#retrieve-portfolios)
+	- [RetrieveReturnsOnPortfolio](#retrievereturnsonportfolio)
 	- [Update portfolio](#update-portfolio)
 	
 - [Security](#security)
@@ -18,6 +19,13 @@
 	- [Retrieve securities](#retrieve-securities)
 	- [Retrieve security](#retrieve-security)
 	- [Update security](#update-security)
+	
+- [SecurtiyMaster](#securtiymaster)
+	- [Create securtiy master](#create-securtiy-master)
+	- [Delete securtiy master](#delete-securtiy-master)
+	- [Retrieve securtiy master](#retrieve-securtiy-master)
+	- [Retrieve securtiy masters](#retrieve-securtiy-masters)
+	- [Update securtiy master](#update-securtiy-master)
 	
 - [Trade](#trade)
 	- [Create trade](#create-trade)
@@ -71,6 +79,7 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| user_id			| String			|  <p>user ID of the user</p>							|
 
 ## Delete portfolio
 
@@ -116,6 +125,19 @@
 | sort			| String[]			| **optional** <p>Order of returned items.</p>							|
 | fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
 
+## RetrieveReturnsOnPortfolio
+
+
+
+	GET /portfolio/returns/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| access_token			| String			|  <p>User access token.</p>							|
+
 ## Update portfolio
 
 
@@ -128,6 +150,7 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| user_id			| String			|  <p>user ID of the user</p>							|
 
 # Security
 
@@ -143,6 +166,8 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| ticker			| String			|  <p>ticker id from security master.</p>							|
+| Portfolio_id			| String			|  <p>Portfolio id to which the security belong</p>							|
 
 ## Delete security
 
@@ -200,6 +225,67 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| ticker			| String			|  <p>ticker id from security master.</p>							|
+| Portfolio_id			| String			|  <p>Portfolio id to which the security belong</p>							|
+
+# SecurtiyMaster
+
+## Create securtiy master
+
+
+
+	POST /securtiy-masters
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| ticker			| String			|  <p>ticker of the security</p>							|
+
+## Delete securtiy master
+
+
+
+	DELETE /securtiy-masters/:id
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| ticker			| String			|  <p>ticker of the security</p>							|
+
+## Retrieve securtiy master
+
+
+
+	GET /securtiy-masters/:id
+
+
+## Retrieve securtiy masters
+
+
+
+	GET /securtiy-masters
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| q			| String			| **optional** <p>Query to search.</p>							|
+| page			| Number			| **optional** <p>Page number.</p>							|
+| limit			| Number			| **optional** <p>Amount of returned items.</p>							|
+| sort			| String[]			| **optional** <p>Order of returned items.</p>							|
+| fields			| String[]			| **optional** <p>Fields to be returned.</p>							|
+
+## Update securtiy master
+
+
+
+	PUT /securtiy-masters/:id
+
 
 # Trade
 
@@ -215,6 +301,11 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| Portfolio_id			| String			|  <p>portfolio in which security is there.</p>							|
+| Security_id			| String			|  <p>security in which trade happened.</p>							|
+| Type			| String			|  <p>type of trade ['BUY','SELL'].</p>							|
+| Quantity			| Number			|  <p>quantity no of trades.</p>							|
+| Price			| Number			|  <p>price price of buy or sell.</p>							|
 
 ## Delete trade
 
@@ -272,6 +363,11 @@
 | Name    | Type      | Description                          |
 |---------|-----------|--------------------------------------|
 | access_token			| String			|  <p>User access token.</p>							|
+| Portfolio_id			| String			|  <p>portfolio in which security is there.</p>							|
+| Security_id			| String			|  <p>security in which trade happened.</p>							|
+| Type			| String			|  <p>type of trade ['BUY','SELL'].</p>							|
+| Quantity			| Number			|  <p>quantity no of trades.</p>							|
+| Price			| Number			|  <p>price price of buy or sell.</p>							|
 
 # User
 

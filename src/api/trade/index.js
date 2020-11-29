@@ -12,6 +12,11 @@ const router = new Router()
  * @apiGroup Trade
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} Portfolio_id portfolio in which security is there.
+ * @apiParam {String} Security_id security in which trade happened.
+ * @apiParam {String} Type type of trade ['BUY','SELL'].
+ * @apiParam {Number} Quantity quantity no of trades.
+ * @apiParam {Number} Price price price of buy or sell.
  * @apiSuccess {Object} trade Trade's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Trade not found.
@@ -55,6 +60,11 @@ router.get('/:id',
  * @apiGroup Trade
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} Portfolio_id portfolio in which security is there.
+ * @apiParam {String} Security_id security in which trade happened.
+ * @apiParam {String} Type type of trade ['BUY','SELL'].
+ * @apiParam {Number} Quantity quantity no of trades.
+ * @apiParam {Number} Price price price of buy or sell.
  * @apiSuccess {Object} trade Trade's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Trade not found.

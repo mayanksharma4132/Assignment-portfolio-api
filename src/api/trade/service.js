@@ -94,6 +94,5 @@ export let showAllTrades = async () =>{
             }
         ];
     let trades = await Trade.aggregate(pipeline);
-    console.log(trades);
     return trades;
 }

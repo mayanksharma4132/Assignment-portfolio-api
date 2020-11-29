@@ -27,7 +27,7 @@ export const update = ({ body,params }, res, next) =>
     .catch(next)
 
 export const destroy = ({ params }, res, next) =>
-removeTrade(params.id)
+  removeTrade(params.id)
     .then(notFound(res))
     .then(success(res, 204))
     .catch(next)

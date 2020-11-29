@@ -12,6 +12,7 @@ const router = new Router()
  * @apiGroup Portfolio
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} user_id user ID of the user
  * @apiSuccess {Object} portfolio Portfolio's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Portfolio not found.
@@ -55,6 +56,7 @@ router.get('/:id',
  * @apiGroup Portfolio
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} user_id user ID of the user
  * @apiSuccess {Object} portfolio Portfolio's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Portfolio not found.
@@ -76,7 +78,16 @@ router.delete('/:id',
   token({ required: true }),
   destroy)
 
-
+/**
+ * @api {get} /portfolio/returns/:id RetrieveReturnsOnPortfolio
+ * @apiName RetrieveReturnsOnPortfolio
+ * @apiGroup Portfolio
+ * @apiPermission User
+ * @apiParam {String} access_token User access token.
+ * @apiSuccess {Object} Returns Returns on the portfolio.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 404 Portfolio not found.
+ */
 router.get('/returns/:id',
   token({ required: true }),
   returns)

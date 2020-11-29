@@ -1,6 +1,12 @@
 import mongoose, { Schema } from 'mongoose'
 
-const portfolioSchema = new Schema({}, { timestamps: true })
+const portfolioSchema = new Schema({
+  user_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+  }
+}, { timestamps: true })
 
 portfolioSchema.methods = {
   view (full) {

@@ -13,28 +13,14 @@ const router = new Router()
  * @apiGroup Security
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} ticker ticker id from security master.
+ * @apiParam {String} Portfolio_id Portfolio id to which the security belong
  * @apiSuccess {Object} security Security's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Security not found.
 
  */
 
-router.post('/addToPortfolio',
-  token({required: true}),
-  addToPortfolio)
-
-
-/**
- * @api {post} /security Create security
- * @apiName CreateSecurity
- * @apiGroup Security
- * @apiPermission User
- * @apiParam {String} access_token User access token.
- * @apiSuccess {Object} security Security's data.
- * @apiError {Object} 400 Some parameters may contain invalid values.
- * @apiError 404 Security not found.
-
- */
 router.post('/',
   token({ required: true}),
   create)
@@ -76,6 +62,8 @@ router.get('/:id',
  * @apiGroup Security
  * @apiPermission User
  * @apiParam {String} access_token User access token.
+ * @apiParam {String} ticker ticker id from security master.
+ * @apiParam {String} Portfolio_id Portfolio id to which the security belong
  * @apiSuccess {Object} security Security's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Security not found.

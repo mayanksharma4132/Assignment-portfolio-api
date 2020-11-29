@@ -10,6 +10,7 @@ const router = new Router()
  * @api {post} /securtiy-masters Create securtiy master
  * @apiName CreateSecurtiyMaster
  * @apiGroup SecurtiyMaster
+ * @apiParam {String} ticker ticker of the security
  * @apiSuccess {Object} securtiyMaster Securtiy master's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Securtiy master not found.
@@ -58,6 +59,7 @@ router.put('/:id',
 /**
  * @api {delete} /securtiy-masters/:id Delete securtiy master
  * @apiName DeleteSecurtiyMaster
+ * @apiParam {String} ticker ticker of the security
  * @apiGroup SecurtiyMaster
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Securtiy master not found.

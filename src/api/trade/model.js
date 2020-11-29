@@ -11,9 +11,18 @@ const tradeSchema = new Schema({
     ref: 'Security',
     required: true
   },
-  Type: String,
-  Quantity: Number,
-  Price: Number,
+  Type: {
+    type: String,
+    required: true
+  },
+  Quantity: {
+    type: Number,
+    required: true
+  } ,
+  Price: {
+    type: Number,
+    required: true
+  },
 }, { timestamps: true })
 
 tradeSchema.methods = {

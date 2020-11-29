@@ -2,10 +2,6 @@ import { success, notFound } from '../../services/response/'
 import { Security } from '.'
 
 
-export const addToPortfolio = ({ body }, res, next) => {
-  
-}
-
 export const create = ({ body }, res, next) =>
   Security.create(body)
     .then((security) => security.view(true))
