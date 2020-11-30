@@ -16,7 +16,7 @@ export let createTrade = async (body) => {
         return trade;
     }catch(err){
         console.log("err ", err);
-        return err;
+        throw err;
     }
 }
 
@@ -47,7 +47,7 @@ export let updateTrade = async (body, id) => {
         return newTrade;
     }catch(err){
         console.log("err ",err);
-        return err;
+        throw err;
     }
 }
 
@@ -64,12 +64,13 @@ export let removeTrade = async (id) => {
         return newTrade;
     }catch(err){
         console.log("err: ",err);
-        return err;
+        throw err;
     }
 }
 
 export let showAllTrades = async () =>{
-    let pipeline = [
+    try{
+        let pipeline = [
             {
                 $lookup:{
                     from : 'securities',
@@ -93,6 +94,11 @@ export let showAllTrades = async () =>{
               $unwind: '$Security_id.ticker'  
             }
         ];
-    let trades = await Trade.aggregate(pipeline);
-    return trades;
+        let trades = await Trade.aggregate(pipeline);
+        return trades;
+    }catch(err){
+        console.log(err);
+        throw err;
+    }
+    
 }

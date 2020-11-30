@@ -7,6 +7,9 @@ export let updateTradeInSecurityOnAdd = async (params) =>{
         await session.startTransaction();
         let { Security_id,Type,Quantity,Price } = params;
         let security = await Security.findById(Security_id);
+        if(!security){
+            throw 'Security id not found!';
+        }
 
         let oldQuantity = security.shares;
         let oldAvgBuyPrice = security.avgBuyPrice; 
@@ -34,7 +37,7 @@ export let updateTradeInSecurityOnAdd = async (params) =>{
         console.log("err: ",err)
         await session.abortTransaction();
         await session.endSession();
-        return err;
+        throw err;
     }
 }
 
@@ -45,6 +48,9 @@ export let updateTradeInSecurityOnUpdate = async (params) => {
         let { oldTrade, newTrade } = params; 
         let Security_id  = oldTrade.Security_id;
         let security = await Security.findById(Security_id);
+        if(!security){
+            throw 'Security id not found!';
+        }
 
         //reverting changes of oldTrade
         let { Type, Price, Quantity } = oldTrade;
@@ -84,7 +90,7 @@ export let updateTradeInSecurityOnUpdate = async (params) => {
         console.log("err ",err);
         await session.abortTransaction();
         await session.endSession();
-        return err;
+        throw err;
     }
 }
 
@@ -94,6 +100,9 @@ export let updateTradeInSecurityOnDelete = async (params) => {
         await session.startTransaction();
         let Security_id  = params.Security_id;
         let security = await Security.findById(Security_id);
+        if(!security){
+            throw 'Security id not found!';
+        }
 
         //reverting changes of oldTrade
         let { Type, Price, Quantity } = params;
@@ -118,7 +127,9 @@ export let updateTradeInSecurityOnDelete = async (params) => {
         return newSecurity;
     }catch(err){
         console.log("err: ",err);
-        return err;
+        await session.abortTransaction();
+        await session.endSession();
+        throw err;
     }
 }
 

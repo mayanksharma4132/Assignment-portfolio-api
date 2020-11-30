@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { middleware as query } from 'querymen'
+import { middleware as body } from 'bodymen'
 import { token } from '../../services/passport'
 import { create, index, show, update, destroy } from './controller'
 export Trade, { schema } from './model'
@@ -22,6 +23,26 @@ const router = new Router()
  * @apiError 404 Trade not found.
  */
 router.post('/',
+  body({
+    Portfolio_id: {
+      type: String
+    },
+    Security_id: {
+      type: String
+    },
+    Type: {
+      type: String,
+      enum: ['BUY','SELL']
+    },
+    Quantity: {
+      type: Number,
+      min: 0
+    },
+    Price: {
+      type: Number,
+      min: 0
+    }
+  }),
   token({ required: true }),
   create)
 
@@ -70,6 +91,26 @@ router.get('/:id',
  * @apiError 404 Trade not found.
  */
 router.put('/:id',
+  body({
+    Portfolio_id: {
+      type: String
+    },
+    Security_id: {
+      type: String
+    },
+    Type: {
+      type: String,
+      enum: ['BUY','SELL']
+    },
+    Quantity: {
+      type: Number,
+      min: 0
+    },
+    Price: {
+      type: Number,
+      min: 0
+    }
+  }),
   token({ required: true }),
   update)
 

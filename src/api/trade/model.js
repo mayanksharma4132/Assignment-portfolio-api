@@ -13,15 +13,18 @@ const tradeSchema = new Schema({
   },
   Type: {
     type: String,
-    required: true
+    required: true,
+    enum: ['BUY','SELL']
   },
   Quantity: {
     type: Number,
-    required: true
+    required: true,
+    min: 0
   } ,
   Price: {
     type: Number,
-    required: true
+    required: true,
+    min: 0
   },
 }, { timestamps: true })
 
