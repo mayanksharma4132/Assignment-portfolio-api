@@ -16,7 +16,7 @@ export let createTrade = async (body) => {
         return trade;
     }catch(err){
         console.log("err ", err);
-        throw err;
+        throw (err || {}).message || err;
     }
 }
 
@@ -47,7 +47,7 @@ export let updateTrade = async (body, id) => {
         return newTrade;
     }catch(err){
         console.log("err ",err);
-        throw err;
+        throw (err || {}).message || err;
     }
 }
 
@@ -64,7 +64,7 @@ export let removeTrade = async (id) => {
         return newTrade;
     }catch(err){
         console.log("err: ",err);
-        throw err;
+        throw (err || {}).message || err;
     }
 }
 
