@@ -28,7 +28,7 @@ export let updateTradeInSecurityOnAdd = async (params) =>{
         let update = {
             $set : { avgBuyPrice: newAvgBuyPrice,shares: newQuantity }
         }
-        let options = { useFindAndModify: false }
+        let options = { useFindAndModify: false,runValidators: true }
         let newSecurity = await Security.findOneAndUpdate(query,update,options);
         await session.commitTransaction();
         await session.endSession();
@@ -79,7 +79,7 @@ export let updateTradeInSecurityOnUpdate = async (params) => {
         let update = {
             $set : { avgBuyPrice: newAvgBuyPrice,shares: newShares }
         }
-        let options = { useFindAndModify: false }
+        let options = { useFindAndModify: false,runValidators: true }
         let newSecurity = await Security.findOneAndUpdate(query,update,options);
         
         await session.commitTransaction();
@@ -119,7 +119,7 @@ export let updateTradeInSecurityOnDelete = async (params) => {
         let update = {
             $set : { avgBuyPrice: newAvgBuyPrice,shares: newShares }
         }
-        let options = { useFindAndModify: false }
+        let options = { useFindAndModify: false,runValidators: true }
         let newSecurity = await Security.findOneAndUpdate(query,update,options);
         await session.commitTransaction();
         await session.endSession();
